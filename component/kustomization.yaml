@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+replacements:
+  - source:
+      kind: Pod
+      name: myapp
+      fieldPath: metadata.name
+    targets:
+      - select:
+          kind: Pod
+          name: myapp
+        fieldPaths:
+          - metadata.labels.name
